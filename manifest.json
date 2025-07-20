@@ -1,0 +1,65 @@
+{
+  "author": "Naaba Technologies LLC",
+  "name": "Web Dev Checklist",
+  "description": "Analyses any web page for violations of best practices",
+  "version": "1.6.24",
+  "manifest_version": 3,
+  "icons": {
+    "16": "assets/logo/webdev-16.png",
+    "19": "assets/logo/webdev-19.png",
+    "32": "assets/logo/webdev-32.png",
+    "48": "assets/logo/webdev-48.png",
+    "64": "assets/logo/webdev-64.png",
+    "128": "assets/logo/webdev-128.png"
+  },
+  "action": {
+    "default_popup": "webdev.html",
+    "default_title": "Web Dev Checklist",
+    "default_icon": {
+      "16": "assets/logo/webdev-16.png",
+      "32": "assets/logo/webdev-32.png",
+      "48": "assets/logo/webdev-48.png",
+      "64": "assets/logo/webdev-64.png",
+      "128": "assets/logo/webdev-128.png"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "scripting",
+    "contextMenus",
+    "storage",
+    "webRequest"
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [ "assets/*/*.png", "assets/*.png", "*.css", "*.js", "rules.js" ],
+      "matches": [ "<all_urls>" ]
+    }
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*",
+    "https://validator.nu/*",
+    "https://example.com/*",
+    "https://ssl-checker.io/"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+C",
+        "mac": "Alt+Shift+C"
+      },
+      "description": "Open Web Dev Checklist"
+    }
+  }
+}
