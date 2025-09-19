@@ -39,83 +39,9 @@ const Ajax = (function () {
 			});
 		}
 
-		function isLocalURL(url) {
-			try {
-				const u = new URL(url);
-				const hostname = u.hostname.toLowerCase();
-
-				// Match localhost, 127.x.x.x and common private IPs, file protocol
-				return (
-					u.protocol === "file:" ||
-					hostname === "localhost" ||
-					hostname === "127.0.0.1" ||
-					hostname.startsWith("192.168.") ||
-					hostname.startsWith("10.") ||
-					hostname.startsWith("172.16.") ||
-					hostname === ""
-				);
-			} catch (e) {
-				return true;
-			}
-		}
-
 		// W3C validation check
 		if (page.Usability.validator.result === "n/a") {
-			if (isLocalURL(page.currentPage)) {
-				page.Usability.validator.result = true;
-				page.Usability.validator.text +=  ": Running Locally";
-				updateItem("validator", page.Usability.validator);
-			} else {
-				const xhr = new XMLHttpRequest();
-
-				xhr.open(
-					"GET",
-					"https://validator.nu?out=json&level=error&laxtype=yes&doc=" + encodeURIComponent(page.currentPage),
-					true
-				);
-
-				xhr.setRequestHeader("Content-type", "text/html");
-
-				xhr.timeout = 5000;
-
-				xhr.onload = function () {
-					if (xhr.readyState === 4) {
-						if (xhr.status === 200) {
-							try {
-								const json = JSON.parse(xhr.responseText);
-								const errors = json.messages.length;
-
-								page.Usability.validator.result = errors === 0;
-								if (errors > 0) {
-									let errorsText = errors === 1 ? "error" : "errors";
-									page.Usability.validator.text += "<span class='error'> " + errors + " " + errorsText + "</span>";
-								}
-							} catch (parseErr) {
-								page.Usability.validator.result = false;
-								page.Usability.validator.text += "<span class='error'>Parsing Error</span>";
-							}
-						} else {
-							page.Usability.validator.result = false;
-							page.Usability.validator.text += "<span class='error'>Network Error</span>";
-						}
-						updateItem("validator", page.Usability.validator);
-					}
-				};
-
-				xhr.onerror = function () {
-					page.Usability.validator.result = false;
-					page.Usability.validator.text += "<span class='error'>Network Error</span>";
-					updateItem("validator", page.Usability.validator);
-				};
-
-				xhr.ontimeout = function () {
-					page.Usability.validator.result = false;
-					page.Usability.validator.text += "<span class='warn'>Timed out</span>";
-					updateItem("validator", page.Usability.validator);
-				};
-
-				xhr.send();
-			}
+			await validatePage(page, updateItem);
 		}
 	}
 
@@ -124,6 +50,72 @@ const Ajax = (function () {
 		const cacheBustedUrl =
 			url + (/\?/.test(url) ? "&" : "?") + "cb=" + new Date().getTime();
 		return fetch(cacheBustedUrl, { method: "GET" });
+	}
+
+	function isLocalURL(url) {
+		try {
+			const u = new URL(url);
+			const hostname = u.hostname.toLowerCase();
+
+			// Match localhost, 127.x.x.x and common private IPs, file protocol
+			return (
+				u.protocol === "file:" ||
+				hostname === "localhost" ||
+				hostname === "127.0.0.1" ||
+				hostname.startsWith("192.168.") ||
+				hostname.startsWith("10.") ||
+				hostname.startsWith("172.16.") ||
+				hostname === ""
+			);
+		} catch (e) {
+			return true;
+		}
+	}
+
+	async function validatePage(page, updateItem) {
+		// Handle local files first
+		if (isLocalURL(page.currentPage)) {
+			page.Usability.validator.result = true;
+			page.Usability.validator.text += ": Running Locally";
+			updateItem("validator", page.Usability.validator);
+			return;
+		}
+
+		const controller = new AbortController();
+		const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+		const validatorUrl = `https://validator.nu?out=json&level=error&laxtype=yes&doc=${encodeURIComponent(page.currentPage)}`;
+
+		try {
+			const response = await fetch(validatorUrl, { signal: controller.signal });
+
+			// Clear the timeout timer if the request completes in time
+			clearTimeout(timeoutId);
+
+			// Check for HTTP errors (e.g., 404, 500)
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+
+			const json = await response.json();
+			const errors = json.messages.length;
+
+			page.Usability.validator.result = errors === 0;
+			if (errors > 0) {
+				const errorsText = errors === 1 ? "error" : "errors";
+				page.Usability.validator.text += `<span class='error'> ${errors} ${errorsText}</span>`;
+			}
+		} catch (error) {
+			page.Usability.validator.result = false;
+			if (error.name === 'AbortError') {
+				page.Usability.validator.text += "<span class='warn'>Timed out</span>";
+			} else {
+				page.Usability.validator.text += "<span class='error'>Network Error</span>";
+			}
+		} finally {
+			// This block always runs, ensuring the UI is updated
+			updateItem("validator", page.Usability.validator);
+		}
 	}
 
 	return {

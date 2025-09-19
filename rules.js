@@ -493,39 +493,79 @@ function GetBrowser() {
                 return;
             }
 
-            for (let s = 0; s < stylesheetsCount; s++) {
-                const cssSheet = document.styleSheets[s];
-
-                if (
-                    cssSheet.href &&
-                    (cssSheet.href.startsWith("http://") ||
-                        cssSheet.href.startsWith("https://"))
-                ) {
-                    const xhr = new XMLHttpRequest();
-                    xhr.open("GET", cssSheet.href, true);
-                    xhr.onload = function () {
-                        if (xhr.readyState === 4 && xhr.status === 200) {
-                            if (xhr.responseText.includes("@media")) {
-                                callback(true);
-                            } else {
-                                checkCountIncrement(callback);
-                            }
-                        } else {
-                            checkCountIncrement(callback);
-                        }
-                    };
-                    xhr.onerror = () => checkCountIncrement(callback);
-                    xhr.send();
-                } else {
-                    checkCountIncrement(callback);
-                }
-            }
-        }
-
-        function checkCountIncrement(callback) {
-            stylesheetCheckCount++;
-            if (stylesheetCheckCount === stylesheetsCount) {
+            let completedCount = 0;
+            let foundMediaQuery = false;
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => {
+                controller.abort();
                 callback(false);
+            }, 3000);
+
+            const cssSheets = Array.from(document.styleSheets)
+                .filter(sheet => sheet.href && 
+                        (sheet.href.startsWith("http://") || sheet.href.startsWith("https://")));
+
+            if (cssSheets.length === 0) {
+                callback(false);
+                return;
+            }
+
+            // Process all CSS sheets in parallel
+            Promise.allSettled(cssSheets.map(sheet => 
+                checkSheetForMediaQueries(sheet.href, controller.signal)
+            )).then(results => {
+                clearTimeout(timeoutId);
+                const hasMediaQuery = results.some(result => 
+                    result.status === 'fulfilled' && result.value
+                );
+                callback(hasMediaQuery);
+            });
+
+            async function checkSheetForMediaQueries(url, signal) {
+                if (foundMediaQuery) return false;
+                
+                // Check cache first
+                const cached = sessionStorage.getItem(`media-query-${url}`);
+                if (cached !== null) {
+                    return cached === 'true';
+                }
+
+                try {
+                    // First check if it's a CSS file with HEAD request
+                    const headResponse = await fetch(url, { 
+                        method: 'HEAD',
+                        signal,
+                        cache: 'force-cache'
+                    });
+                    
+                    if (!headResponse.ok) return false;
+                    
+                    const contentType = headResponse.headers.get('content-type');
+                    if (!contentType || !contentType.includes('text/css')) {
+                        return false;
+                    }
+
+                    // If it's CSS, fetch the content
+                    const response = await fetch(url, { 
+                        signal,
+                        cache: 'force-cache'
+                    });
+                    
+                    if (!response.ok) return false;
+                    
+                    const text = await response.text();
+                    const hasMedia = text.includes("@media");
+                    
+                    // Cache the result
+                    sessionStorage.setItem(`media-query-${url}`, hasMedia ? 'true' : 'false');
+                    
+                    return hasMedia;
+                } catch (error) {
+                    if (error.name !== 'AbortError') {
+                        console.warn(`Failed to check ${url}:`, error);
+                    }
+                    return false;
+                }
             }
         }
 
@@ -580,112 +620,92 @@ function GetBrowser() {
             const forms = document.querySelectorAll('form');
             if (forms.length === 0) return true;
 
-            let tokenFound = false;
-
+            // Pre-compile regex patterns for better performance
             const csrfPatterns = [
-                // General patterns
-                /^csrf[-_]?token$/i,
-                /^[a-z0-9_-]*token[a-z0-9_-]*$/i,
-                /^[a-z0-9_-]*csrf[a-z0-9_-]*$/i,
+                /^(csrf[-_]?token|authenticity_token|csrfmiddlewaretoken|_token|__requestverificationtoken|securitytoken|antiforgerytoken|ftoken|form[-_]?token|state|nonce)$/i,
                 /^_[a-z0-9]+_token$/i,
-                
-                // Framework-specific patterns
-                /^authenticity_token$/i,               // Ruby on Rails
-                /^csrfmiddlewaretoken$/i,             // Django
-                /^_token$/i,                          // Laravel, Symfony
-                /^__requestverificationtoken$/i,      // ASP.NET MVC
-                /^securitytoken$/i,                   // Some Java frameworks
-                /^antiforgerytoken$/i,                // ASP.NET Core
-                /^ftoken$/i,                          // Some custom implementations
-                /^form[_\-]?token$/i,
-                /^state$/i,                           // OAuth state parameter
-                /^nonce$/i,                           // WordPress nonce
-                
-                // Common variations
                 /^[a-z0-9_-]*(csrf|token|secure|auth|validation)[a-z0-9_-]*$/i
             ];
 
-            // Patterns to exclude (API tokens, etc.)
             const excludePatterns = [
-                /^api[-_]?key$/i,
-                /^access[-_]?token$/i,
-                /^bearer[-_]?token$/i,
-                /^oauth[-_]?token$/i,
-                /^jwt$/i,
-                /^session[-_]?id$/i,
-                /^auth[-_]?token$/i,
-                /^id[-_]?token$/i
+                /^(api[-_]?key|access[-_]?token|bearer[-_]?token|oauth[-_]?token|jwt|session[-_]?id|auth[-_]?token|id[-_]?token)$/i
             ];
 
-            forms.forEach(form => {
-                const hiddenInputs = form.querySelectorAll('input[type="hidden"]');
+            const metaPatterns = new Set([
+                'csrf-token', 'xsrf-token', 'csrf-param', 'authenticity-token',
+                'csrf_token', '__requestverificationtoken', 'anti-forgery-token',
+                'wordpress_nonce', 'joomla_token', 'django_csrftoken', 'authenticity_token',
+                'request-verification-token', 'form_token', 'csrftoken', 'csrfparam', 'xsrf'
+            ]);
 
-                hiddenInputs.forEach(input => {
+            // Check forms first (most common place for CSRF tokens)
+            for (const form of forms) {
+                const hiddenInputs = form.querySelectorAll('input[type="hidden"]');
+                
+                for (const input of hiddenInputs) {
                     const inputName = input.getAttribute('name');
-                    if (inputName) {
-                        // Skip if matches API token patterns
-                        if (excludePatterns.some(pattern => pattern.test(inputName))) {
-                            return;
-                        }
-                        
-                        // Check against CSRF patterns
-                        if (csrfPatterns.some(pattern => pattern.test(inputName))) {
-                            // Additional validation - CSRF tokens are typically alphanumeric with certain length
-                            const value = input.value;
-                            if (value && /^[a-z0-9_\-=]{16,}$/i.test(value)) {
-                                tokenFound = true;
-                            }
+                    if (!inputName) continue;
+
+                    // Skip excluded patterns first (cheaper check)
+                    if (excludePatterns.some(pattern => pattern.test(inputName))) {
+                        continue;
+                    }
+
+                    // Check CSRF patterns
+                    if (csrfPatterns.some(pattern => pattern.test(inputName))) {
+                        const value = input.value;
+                        // Simplified validation - CSRF tokens are typically not empty
+                        if (value && value.length >= 8) {
+                            return true; // Early return when found
                         }
                     }
-                });
-
-                if (!tokenFound) {
-                    // Framework-specific meta tags
-                    const metaPatterns = [
-                        'csrf-token', 'xsrf-token', 'csrf-param', 'authenticity-token',
-                        'csrf_token', '__requestverificationtoken', 'anti-forgery-token',
-                        'wordpress_nonce', 'joomla_token', 'django_csrftoken', 'authenticity_token',
-                        'request-verification-token', 'form_token', 'csrfToken', 'csrfparam', 'xsrf'
-                    ];
-                    
-                    const metas = document.querySelectorAll('meta[name]');
-                    metas.forEach(meta => {
-                        const name = meta.getAttribute('name').toLowerCase();
-                        if (metaPatterns.includes(name) && meta.getAttribute('content')) {
-                            tokenFound = true;
-                        }
-                    });
-                }
-            });
-
-            // Additional checks for JavaScript frameworks
-            if (!tokenFound) {
-                if (document.cookie.match(
-                    /X-CSRF-Token/i,
-                    /X-XSRF-Token/i,
-                    /X-Requested-With/i,
-                    /XSRF-TOKEN=[^;]+/
-                )) {
-                    tokenFound = true;
-                }
-                
-                if (window.__CSRF_TOKEN__ || window.csrfToken) {
-                    tokenFound = true;
-                }
-                
-                if (typeof XMLHttpRequest !== 'undefined') {
-                    const originalOpen = XMLHttpRequest.prototype.open;
-                    XMLHttpRequest.prototype.open = function() {
-                        const headers = this.getAllResponseHeaders().toLowerCase();
-                        if (headers.includes('x-csrf-token') || headers.includes('xsrf-token')) {
-                            tokenFound = true;
-                        }
-                        return originalOpen.apply(this, arguments);
-                    };
                 }
             }
 
-            return tokenFound;
+            // Check meta tags
+            const metas = document.querySelectorAll('meta[name]');
+            for (const meta of metas) {
+                const name = meta.getAttribute('name');
+                if (name && metaPatterns.has(name.toLowerCase()) && meta.getAttribute('content')) {
+                    return true; // Early return when found
+                }
+            }
+
+            // Check cookies (fast check)
+            if (document.cookie && (
+                /(X[-_])?CSRF[-_]?Token=/i.test(document.cookie) ||
+                /XSRF[-_]?TOKEN=/i.test(document.cookie) ||
+                /X[-_]?Requested[-_]?With=/i.test(document.cookie)
+            )) {
+                return true;
+            }
+
+            // Check window properties (very fast check)
+            if (window.__CSRF_TOKEN__ !== undefined || 
+                window.csrfToken !== undefined ||
+                window.XSRF_TOKEN !== undefined) {
+                return true;
+            }
+
+            // Check HTTP headers (last resort - more expensive)
+            if (typeof XMLHttpRequest !== 'undefined') {
+                // Create a test request instead of monkey-patching
+                try {
+                    const testXhr = new XMLHttpRequest();
+                    testXhr.open('GET', window.location.href, false); // Synchronous for simplicity
+                    testXhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                    testXhr.send();
+                    
+                    const headers = testXhr.getAllResponseHeaders().toLowerCase();
+                    if (headers.includes('x-csrf-token') || headers.includes('xsrf-token')) {
+                        return true;
+                    }
+                } catch (e) {
+                    // Silent fail - headers might not be accessible
+                }
+            }
+
+            return false;
         }
 
         function checkStateChangingGetRequests() {
@@ -693,35 +713,31 @@ function GetBrowser() {
             return getForms.length === 0;
         }
 
-        // Extract clean domain for urls
-        function extractDomain(rawUrl) {
-            try {
-                const url = new URL(rawUrl);
-                let hostname = url.hostname;
-
-                if (hostname.startsWith("www.")) {
-                    hostname = hostname.slice(4);
-                }
-
-                return hostname;
-            } catch (e) {
-                return "";
-            }
-        }
-
         async function checkSSL() {
-            const domain = window.location.hostname.replace('www.', '');
-            
+            // First check if we're running locally
+            if (isLocalURL(window.location.href)) {
+                return {
+                    isSecure: true,
+                    expired: null,
+                    message: "Running locally - SSL not applicable",
+                    local: true
+                };
+            }
+
+            // For non-local URLs, proceed with SSL checks
             try {
                 const isSecure = window.location.protocol === 'https:';
                 if (!isSecure) {
                     return {
                         isSecure: false,
                         expired: null,
-                        message: "Not using HTTPS"
+                        message: "Not using HTTPS",
+                        local: false
                     };
                 }
 
+                // Only check SSL details for HTTPS sites
+                const domain = window.location.hostname.replace('www.', '');
                 const response = await chrome.runtime.sendMessage({
                     type: "checkSSL",
                     domain: domain
@@ -742,16 +758,71 @@ function GetBrowser() {
                     issuer: certData.issuer_o || certData.issuer_cn || "Unknown",
                     message: isExpired ? 
                         `⚠️ Expired on ${certData.valid_till}` : 
-                        `Valid until ${certData.valid_till || 'unknown'}`
+                        `Valid until ${certData.valid_till || 'unknown'}`,
+                    local: false
                 };
 
             } catch (error) {
                 return {
                     isSecure: false,
                     expired: null,
-                    message: "Check failed - " + (error.message || "Unknown error")
+                    message: "Check failed - " + (error.message || "Unknown error"),
+                    local: false
                 };
             }
+        }
+
+        function isLocalURL(url) {
+            try {
+                const u = new URL(url);
+                const hostname = u.hostname.toLowerCase();
+
+                // Match localhost, 127.x.x.x and common private IPs, file protocol
+                return (
+                    u.protocol === "file:" ||
+                    hostname === "localhost" ||
+                    hostname === "127.0.0.1" ||
+                    hostname.startsWith("192.168.") ||
+                    hostname.startsWith("10.") ||
+                    hostname.startsWith("172.16.") ||
+                    hostname === "" ||
+                    // Also match .localhost TLD and common dev domains
+                    hostname.endsWith('.localhost') ||
+                    hostname.endsWith('.local') ||
+                    hostname.endsWith('.test') ||
+                    hostname.endsWith('.example') ||
+                    // Match any IP address in private ranges
+                    isPrivateIP(hostname)
+                );
+            } catch (e) {
+                return true; // Assume local if URL parsing fails
+            }
+        }
+
+        function isPrivateIP(hostname) {
+            // Check if hostname is an IP address and in private range
+            const ipRegex = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/;
+            if (!ipRegex.test(hostname)) return false;
+            
+            const parts = hostname.split('.').map(Number);
+            
+            // Check private IP ranges:
+            // 10.0.0.0 - 10.255.255.255
+            if (parts[0] === 10) return true;
+            
+            // 172.16.0.0 - 172.31.255.255
+            if (parts[0] === 172 && parts[1] >= 16 && parts[1] <= 31) return true;
+            
+            // 192.168.0.0 - 192.168.255.255
+            if (parts[0] === 192 && parts[1] === 168) return true;
+            
+            // 127.0.0.0 - 127.255.255.255 (loopback)
+            if (parts[0] === 127) return true;
+            
+            // 169.254.0.0 - 169.254.255.255 (link-local)
+            if (parts[0] === 169 && parts[1] === 254) return true;
+            
+            return false;
         }
 
         load();
