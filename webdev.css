@@ -67,6 +67,10 @@ a,button,.button,.elementWrapper,.descWrapper {
     cursor: pointer;
 }
 
+.settings {
+    transition: all 0.3s ease;
+}
+
 .settings:hover {
     background: var(--tertiary-color);
     border: 1px solid var(--tertiary-color);
@@ -120,7 +124,6 @@ header img.dark {
 
 .reload-wrapper {
     display: flex;
-    /* flex-direction: column; */
     align-items: center;
     justify-content: center;
 }
@@ -155,8 +158,8 @@ li .elementWrapper {
     align-items: center;
     justify-content: space-between;
     background: var(--elements-color);
-    border: #4a5a78ad 1px solid;
-    box-shadow: 0px 2px 4px 0px #0d162535;
+    border: var(--borders-color) 1px solid;
+    box-shadow: var(--box-shadow-s);
     border-radius: var(--border-radius-m);
     padding: 10px 8px;
     margin: 0px 0px;
@@ -238,7 +241,7 @@ li.question .question-icon {
     margin: 0px 12px;
     height: 0px;
     border-radius: 0 0 var(--border-radius-m) var(--border-radius-m);
-    background: var(--header-color);
+    background: var(--other-color);
     will-change: visibility;
     transition: all 0.2s ease-in;
 }
@@ -380,7 +383,7 @@ footer {
     text-align: center;
     padding: 8px 0 16px;
     color: var(--text-color);
-    border-top: var(--content-color) solid 1px;
+    border-top: var(--borders-color) solid 1px;
 }
 
 footer a {
@@ -396,7 +399,7 @@ footer a:hover {
 }
 
 footer p:last-child {
-    color: var(--elements-color);
+    color: var(--other-color);
     font-size: 11px;
     justify-self: end;
 }

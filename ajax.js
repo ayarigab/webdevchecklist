@@ -18,7 +18,15 @@ const Ajax = (function () {
 			updateItem("sitemaps", page.SEO.sitemaps);
 		});
 
-		
+		// llms.txt check
+		fetchWithCacheBuster(page.url + "/llms.txt").then((res) => {
+			page.SEO.llms.result = res.status === 200;
+			updateItem("llms", page.SEO.llms);
+		}).catch(() => {
+			page.SEO.llms.result = false;
+			updateItem("llms", page.SEO.llms);
+		});
+
 		// Favicon check if not already present
 		if (!page.Usability.favicon.result) {
 			fetchWithCacheBuster(page.url + "/favicon.ico").then((res) => {
@@ -31,34 +39,83 @@ const Ajax = (function () {
 			});
 		}
 
+		function isLocalURL(url) {
+			try {
+				const u = new URL(url);
+				const hostname = u.hostname.toLowerCase();
+
+				// Match localhost, 127.x.x.x and common private IPs, file protocol
+				return (
+					u.protocol === "file:" ||
+					hostname === "localhost" ||
+					hostname === "127.0.0.1" ||
+					hostname.startsWith("192.168.") ||
+					hostname.startsWith("10.") ||
+					hostname.startsWith("172.16.") ||
+					hostname === ""
+				);
+			} catch (e) {
+				return true;
+			}
+		}
+
 		// W3C validation check
 		if (page.Usability.validator.result === "n/a") {
-			const xhr = new XMLHttpRequest();
-			xhr.open(
-				"GET",
-				"https://validator.nu?out=json&level=error&laxtype=yes&doc=" +
-				encodeURIComponent(page.currentPage),
-				true
-			);
-			xhr.setRequestHeader("Content-type", "text/html");
+			if (isLocalURL(page.currentPage)) {
+				page.Usability.validator.result = true;
+				page.Usability.validator.text +=  ": Running Locally";
+				updateItem("validator", page.Usability.validator);
+			} else {
+				const xhr = new XMLHttpRequest();
 
-			xhr.onload = function () {
-				if (xhr.readyState === 4 && xhr.status === 200) {
-					const json = JSON.parse(xhr.responseText);
-					const errors = json.messages.length;
+				xhr.open(
+					"GET",
+					"https://validator.nu?out=json&level=error&laxtype=yes&doc=" + encodeURIComponent(page.currentPage),
+					true
+				);
 
-					page.Usability.validator.result = errors === 0;
+				xhr.setRequestHeader("Content-type", "text/html");
 
-					if (errors > 0) {
-						let errorsText = errors === 1 ? "error" : "errors";
-						page.Usability.validator.text +=
-							"<span class='error'> " + errors + " " + errorsText + "</span>";
+				xhr.timeout = 5000;
+
+				xhr.onload = function () {
+					if (xhr.readyState === 4) {
+						if (xhr.status === 200) {
+							try {
+								const json = JSON.parse(xhr.responseText);
+								const errors = json.messages.length;
+
+								page.Usability.validator.result = errors === 0;
+								if (errors > 0) {
+									let errorsText = errors === 1 ? "error" : "errors";
+									page.Usability.validator.text += "<span class='error'> " + errors + " " + errorsText + "</span>";
+								}
+							} catch (parseErr) {
+								page.Usability.validator.result = false;
+								page.Usability.validator.text += "<span class='error'>Parsing Error</span>";
+							}
+						} else {
+							page.Usability.validator.result = false;
+							page.Usability.validator.text += "<span class='error'>Network Error</span>";
+						}
+						updateItem("validator", page.Usability.validator);
 					}
+				};
 
+				xhr.onerror = function () {
+					page.Usability.validator.result = false;
+					page.Usability.validator.text += "<span class='error'>Network Error</span>";
 					updateItem("validator", page.Usability.validator);
-				}
-			};
-			xhr.send();
+				};
+
+				xhr.ontimeout = function () {
+					page.Usability.validator.result = false;
+					page.Usability.validator.text += "<span class='warn'>Timed out</span>";
+					updateItem("validator", page.Usability.validator);
+				};
+
+				xhr.send();
+			}
 		}
 	}
 

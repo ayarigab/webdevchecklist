@@ -1,4 +1,3 @@
-// Settings persistence Class
 class SettingsManager {
     constructor() {
         this.settings = {
@@ -6,97 +5,155 @@ class SettingsManager {
             notifications: false,
             borderRadi: false
         };
-        this.loadSettings();
+        this.cacheDOM();
+        this.init();
     }
 
-    loadSettings() {
-        if (typeof chrome !== 'undefined' && chrome.storage) {
-            chrome.storage.sync.get(['settings'], (result) => {
+    cacheDOM() {
+        this.dom = {
+            darkModeToggle: document.getElementById('darkMode'),
+            notificationsToggle: document.getElementById('notifications'),
+            borderRadiToggle: document.getElementById('borderRadi'),
+            body: document.body,
+            html: document.documentElement
+        };
+    }
+
+    async init() {
+        await this.loadSettings();
+        this.applySettings();
+        this.bindEvents();
+    }
+
+    async loadSettings() {
+        try {
+            if (typeof chrome !== 'undefined' && chrome.storage) {
+                const result = await chrome.storage.sync.get(['settings']);
                 if (result.settings) {
-                    this.settings = {...this.settings, ...result.settings};
-                    this.applySettings();
+                    this.settings = { ...this.settings, ...result.settings };
                 }
-                this.applyTheme();
-                this.applyBorder();
-            });
-        } else {
-            const savedSettings = localStorage.getItem('wdSettings');
-            if (savedSettings) {
-                this.settings = {...this.settings, ...JSON.parse(savedSettings)};
-                this.applySettings();
+            } else {
+                const savedSettings = localStorage.getItem('wdSettings');
+                if (savedSettings) {
+                    this.settings = { ...this.settings, ...JSON.parse(savedSettings) };
+                }
             }
-            this.applyTheme();
-            this.applyBorder();
+        } catch (error) {
+            console.error('Failed to load settings:', error);
         }
     }
 
-    saveSettings() {
-        if (typeof chrome !== 'undefined' && chrome.storage) {
-            chrome.storage.sync.set({ settings: this.settings });
-        } else {
-            localStorage.setItem('wdSettings', JSON.stringify(this.settings));
+    async saveSettings() {
+        try {
+            if (typeof chrome !== 'undefined' && chrome.storage) {
+                await chrome.storage.sync.set({ settings: this.settings });
+            } else {
+                localStorage.setItem('wdSettings', JSON.stringify(this.settings));
+            }
+        } catch (error) {
+            console.error('Failed to save settings:', error);
         }
     }
 
     applySettings() {
-        document.getElementById('darkMode').checked = this.settings.darkMode;
-        document.getElementById('notifications').checked = this.settings.notifications;
-        document.getElementById('borderRadi').checked = this.settings.borderRadi;
+        const { darkModeToggle, notificationsToggle, borderRadiToggle } = this.dom;
+        const { darkMode, notifications, borderRadi } = this.settings;
+
+        darkModeToggle.checked = darkMode;
+        notificationsToggle.checked = notifications;
+        borderRadiToggle.checked = borderRadi;
+
+        this.applyTheme();
+        this.applyBorder();
     }
 
     applyTheme() {
+        const { body, html } = this.dom;
         const { darkMode } = this.settings;
-        document.body.classList.toggle('dark-mode', darkMode);
-        document.documentElement.classList.toggle('light-mode', !darkMode);
+
+        body.classList.toggle('dark-mode', darkMode);
+        html.classList.toggle('light-mode', !darkMode);
     }
 
     applyBorder() {
+        const { body, html } = this.dom;
         const { borderRadi } = this.settings;
-        document.body.classList.toggle('rounded-mode', borderRadi);
-        document.documentElement.classList.toggle('none-rounded', !borderRadi);
+
+        body.classList.toggle('rounded-mode', borderRadi);
+        html.classList.toggle('none-rounded', !borderRadi);
+    }
+
+    bindEvents() {
+        const { darkModeToggle, notificationsToggle, borderRadiToggle } = this.dom;
+
+        darkModeToggle.addEventListener('change', (e) => {
+            this.settings.darkMode = e.target.checked;
+            this.saveSettings();
+            this.applyTheme();
+        });
+
+        notificationsToggle.addEventListener('change', (e) => {
+            this.settings.notifications = e.target.checked;
+            this.saveSettings();
+        });
+
+        borderRadiToggle.addEventListener('change', (e) => {
+            this.settings.borderRadi = e.target.checked;
+            this.saveSettings();
+            this.applyBorder();
+        });
     }
 }
 
-// Initialize settings
-const settingsManager = new SettingsManager();
+class TabManager {
+    constructor() {
+        this.tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+        this.tabPanes = Array.from(document.querySelectorAll('.tab-pane'));
+        this.bindEvents();
+    }
 
-document.querySelector('.close-settings').addEventListener('click', () => {
-    document.getElementById('settings').classList.remove('show');
-});
+    bindEvents() {
+        this.tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => this.switchTab(btn));
+        });
+    }
 
-// Tab switching
-document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-        
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
-    });
-});
+    switchTab(activeBtn) {
+        // Remove active class from all buttons and panes
+        this.tabButtons.forEach(btn => btn.classList.remove('active'));
+        this.tabPanes.forEach(pane => pane.classList.remove('active'));
 
-document.getElementById('darkMode').addEventListener('change', (e) => {
-    settingsManager.settings.darkMode = e.target.checked;
-    settingsManager.saveSettings();
-    settingsManager.applyTheme();
-});
+        // Add active class to clicked button and corresponding pane
+        activeBtn.classList.add('active');
+        const activePane = document.getElementById(activeBtn.dataset.tab);
+        if (activePane) activePane.classList.add('active');
+    }
+}
 
-document.getElementById('notifications').addEventListener('change', (e) => {
-    settingsManager.settings.notifications = e.target.checked;
-    settingsManager.saveSettings();
-});
+class ActionManager {
+    static bindActions() {
+        document.getElementById('reportBug')?.addEventListener('click', () => {
+            window.open('https://github.com/ayarigab/webdevchecklist/issues/new', '_blank');
+        });
 
-document.getElementById('borderRadi').addEventListener('change', (e) => {
-    settingsManager.settings.borderRadi = e.target.checked;
-    settingsManager.saveSettings();
-    settingsManager.applyBorder();
-});
+        document.getElementById('documentation')?.addEventListener('click', () => {
+            window.open('https://github.com/ayarigab/webdevchecklist', '_blank');
+        });
 
-// Action buttons
-document.getElementById('reportBug').addEventListener('click', () => {
-    window.open('https://github.com/your-repo/issues/new', '_blank');
-});
+        document.querySelector('.close-settings')?.addEventListener('click', () => {
+            document.getElementById('settings')?.classList.remove('show');
+        });
+    }
+}
 
-document.getElementById('documentation').addEventListener('click', () => {
-    window.open('https://naabatechs.com/developers/webdevchecklist', '_blank');
+document.addEventListener('DOMContentLoaded', async () => {
+    // Initialize all modules
+    new SettingsManager();
+    new TabManager();
+    ActionManager.bindActions();
+
+    // Initialize localization if needed
+    if (typeof LocalizationHelper !== 'undefined') {
+        await LocalizationHelper.init();
+    }
 });

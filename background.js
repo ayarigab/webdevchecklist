@@ -3,7 +3,7 @@
 // Licensed under the MIT License.
 // you are free to use this file, modify and/or redistribute it in any way or form.
 // https://naabatech.com/licenses/MIT
-// v1.6.24
+// v1.6.24-Beta
 
 // Listen for keyboard shortcut commands defined in manifest
 chrome.commands.onCommand.addListener((command) => {
@@ -68,7 +68,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
     chrome.contextMenus.create({
         id: "help_resource",
-        title: "Help resources",
+        title: "AI Checklist (Coming soon)",
         contexts: ["all"]
     });
 });
@@ -137,7 +137,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
         sendResponse({ success: true });
     }
-
 
     if (request.type === "result") {
         chrome.runtime.sendMessage({ type: "done", data: request.data });
