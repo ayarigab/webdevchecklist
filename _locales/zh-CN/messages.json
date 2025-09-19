@@ -1,0 +1,398 @@
+{
+  "extensionName": {
+    "message": "Web开发检查清单",
+    "description": "Extension name"
+  },
+  "extensionNameShort": {
+    "message": "WD检查清单",
+    "description": "Short extension name"
+  },
+  "applying": {
+    "message": "应用中...",
+    "description": "Text shown when a setting is being applied"
+  },
+  "extensionDescription": {
+    "message": "分析任何网页是否存在最佳实践违规",
+    "description": "Extension description"
+  },
+  "settingsTitle": {
+    "message": "设置",
+    "description": "Settings panel title"
+  },
+  "langTitle": {
+    "message": "语言",
+    "description": "Language title"
+  },
+  "closeSettingsTitle": {
+    "message": "关闭设置",
+    "description": "Close button title"
+  },
+  "generalTabText": {
+    "message": "常规",
+    "description": "General tab text"
+  },
+  "shortcutsTabText": {
+    "message": "快捷键",
+    "description": "Shortcuts tab text"
+  },
+  "infoTabText": {
+    "message": "信息",
+    "description": "Info tab text"
+  },
+  "languageLabel": {
+    "message": "语言",
+    "description": "Language dropdown label"
+  },
+  "darkModeLabel": {
+    "message": "深色模式",
+    "description": "Dark mode toggle label"
+  },
+  "notificationsLabel": {
+    "message": "启用通知",
+    "description": "Notifications toggle label"
+  },
+  "borderRadiusLabel": {
+    "message": "所有边框圆角",
+    "description": "Border radius toggle label"
+  },
+  "whatsNewTitle": {
+    "message": "新功能",
+    "description": "What's new section title"
+  },
+  "aboutTitle": {
+    "message": "关于",
+    "description": "About section title"
+  },
+  "reportIssuesTitle": {
+    "message": "报告问题",
+    "description": "Report issues section title"
+  },
+  "resourcesTitle": {
+    "message": "资源",
+    "description": "Resources section title"
+  },
+  "submitBugReportText": {
+    "message": "提交错误报告",
+    "description": "Bug report button text"
+  },
+  "documentationText": {
+    "message": "文档",
+    "description": "Documentation button text"
+  },
+  "footerText": {
+    "message": "更多信息请访问",
+    "description": "Footer text before link"
+  },
+  "reloadPrompt": {
+    "message": "扩展需要重新加载以应用语言更改。立即重新加载？",
+    "description": "Language change reload prompt"
+  },
+  "structuredDataForGoogle": {
+    "message": "谷歌搜索结构化数据",
+    "description": "Structured Data for Google Search"
+  },
+  "donateTitle": {
+    "message": "支持扩展开发",
+    "description": "Donate button title"
+  },
+  "donateText": {
+    "message": "Ko-Fi捐赠",
+    "description": "Donate button text"
+  },
+  "generalTabTitle": {
+    "message": "常规设置",
+    "description": "General tab title attribute"
+  },
+  "shortcutsTabTitle": {
+    "message": "键盘快捷键",
+    "description": "Shortcuts tab title attribute"
+  },
+  "infoTabTitle": {
+    "message": "信息和资源",
+    "description": "Info tab title attribute"
+  },
+  "changeLanguageTitle": {
+    "message": "更改扩展语言",
+    "description": "Language selector title attribute"
+  },
+  "schemaGeneratorTool": {
+    "message": "Schema生成工具",
+    "description": "Schema Generator tool"
+  },
+  "schemaMarkupValidator": {
+    "message": "Schema标记验证器",
+    "description": "Schema Markup Validator"
+  },
+  "richResultsTest": {
+    "message": "富媒体结果测试",
+    "description": "Rich Results Test"
+  },
+  "schemaJsonGeneratorTool": {
+    "message": "Schema JSON生成工具",
+    "description": "Schema JSON Generator tool"
+  },
+  "metaDescription": {
+    "message": "元描述",
+    "description": "Meta description"
+  },
+  "metaDescriptionInfo": {
+    "message": "元描述",
+    "description": "Meta description info"
+  },
+  "canonicalUrl": {
+    "message": "规范URL",
+    "description": "Canonical URL"
+  },
+  "websiteTitle": {
+    "message": "网站标题",
+    "description": "Website Title"
+  },
+  "seoKeywords": {
+    "message": "SEO关键词：",
+    "description": "SEO Keywords prefix"
+  },
+  "chars": {
+    "message": "字符",
+    "description": "Characters abbreviation"
+  },
+  "words": {
+    "message": "单词",
+    "description": "Words abbreviation"
+  },
+  "tagMissing": {
+    "message": "标签缺失",
+    "description": "Tag missing indicator"
+  },
+  "keywordResearchTool": {
+    "message": "关键词研究工具",
+    "description": "Keyword Research Tool"
+  },
+  "seoBestPractices": {
+    "message": "SEO最佳实践",
+    "description": "SEO Best Practices"
+  },
+  "websiteHasRobotsTxt": {
+    "message": "网站有robots.txt文件",
+    "description": "Website has robots.txt"
+  },
+  "robotsTxtTutorial": {
+    "message": "robots.txt教程",
+    "description": "Robots.txt tutorial"
+  },
+  "freeRobotsTxtGenerator": {
+    "message": "免费robots.txt生成器",
+    "description": "Free Robots.txt Generator"
+  },
+  "freeRobotsTxtGenerator2": {
+    "message": "免费robots.txt生成器（备选）",
+    "description": "Free Robots.txt Generator 2nd option"
+  },
+  "websiteHasXmlSitemaps": {
+    "message": "网站有XML站点地图",
+    "description": "Website has XML Sitemaps"
+  },
+  "generateXmlSitemaps": {
+    "message": "生成XML站点地图",
+    "description": "Generate XML Sitemaps"
+  },
+  "websiteHasLlmsTxt": {
+    "message": "网站有llms.txt",
+    "description": "Website has llms.txt"
+  },
+  "llmsTxtDescription": {
+    "message": "为LLM提供网站信息的提案。更多信息见下方",
+    "description": "llms.txt description"
+  },
+  "cssMediaQueries": {
+    "message": "CSS媒体查询",
+    "description": "CSS Media Queries"
+  },
+  "mediaQueriesExplained": {
+    "message": "媒体查询说明",
+    "description": "Media queries explained"
+  },
+  "viewportMetaTag": {
+    "message": "视口元标签",
+    "description": "Viewport meta tag"
+  },
+  "usingTheViewport": {
+    "message": "使用视口",
+    "description": "Using the viewport"
+  },
+  "favicon": {
+    "message": "网站图标",
+    "description": "Favicon"
+  },
+  "useFriendlyUrls": {
+    "message": "使用简短友好的URL",
+    "description": "Use Friendly URLs"
+  },
+  "explanationAndGuide": {
+    "message": "说明和指南",
+    "description": "Explanation and guide"
+  },
+  "friendlyUrlChecker": {
+    "message": "友好URL检查器",
+    "description": "Friendly URL Checker"
+  },
+  "htmlValidation": {
+    "message": "HTML验证",
+    "description": "HTML validation"
+  },
+  "onlineValidator": {
+    "message": "在线验证器",
+    "description": "Online validator"
+  },
+  "waiAriaLandmarks": {
+    "message": "WAI-ARIA地标",
+    "description": "WAI-ARIA Landmarks"
+  },
+  "usingLandmarks": {
+    "message": "使用地标",
+    "description": "Using Landmarks"
+  },
+  "altAttributes": {
+    "message": "在图片上使用`alt=\"文本内容\"`属性",
+    "description": "Alt attributes"
+  },
+  "imageAltAttributeTips": {
+    "message": "图片'alt'属性技巧",
+    "description": "Image alt attribute tips"
+  },
+  "xssVulnerabilities": {
+    "message": "XSS漏洞 \"",
+    "description": "XSS Vulnerabilities prefix"
+  },
+  "detected": {
+    "message": "已检测",
+    "description": "Detected"
+  },
+  "notFound": {
+    "message": "未找到",
+    "description": "Not Found"
+  },
+  "getXssCheatSheet": {
+    "message": "获取XSS备忘单",
+    "description": "Get XSS Cheat Sheet"
+  },
+  "domXssCheatSheet": {
+    "message": "DOM XSS备忘单",
+    "description": "DOM XSS Cheat Sheet"
+  },
+  "xssFilterEvasion": {
+    "message": "XSS过滤器绕过",
+    "description": "XSS Filter Evasion"
+  },
+  "csrfProtection": {
+    "message": "CSRF防护 \"",
+    "description": "CSRF Protection prefix"
+  },
+  "vulnerable": {
+    "message": "易受攻击",
+    "description": "Vulnerable"
+  },
+  "csrfCheatSheet": {
+    "message": "CSRF备忘单",
+    "description": "CSRF Cheat Sheet"
+  },
+  "csrfProtectionGuide": {
+    "message": "CSRF防护指南",
+    "description": "CSRF Protection Guide"
+  },
+  "csrfTestingMethodology": {
+    "message": "CSRF测试方法",
+    "description": "CSRF Testing Methodology"
+  },
+  "siteUrlHas": {
+    "message": "网站URL包含 ",
+    "description": "Site URL has prefix"
+  },
+  "valid": {
+    "message": "✅ 有效",
+    "description": "Valid indicator"
+  },
+  "invalid": {
+    "message": "❌ 无效",
+    "description": "Invalid indicator"
+  },
+  "certificate": {
+    "message": "证书",
+    "description": "Certificate"
+  },
+  "getFreeSslCertificate": {
+    "message": "获取免费SSL证书",
+    "description": "Get Free SSL Certificate"
+  },
+  "learnMoreAboutSsl": {
+    "message": "了解更多SSL信息",
+    "description": "Learn more about SSL"
+  },
+  "testYourDomain": {
+    "message": "测试您的域名",
+    "description": "Test Your Domain"
+  },
+  "openGraph": {
+    "message": "OpenGraph",
+    "description": "OpenGraph"
+  },
+  "openGraphProtocolReference": {
+    "message": "OpenGraph协议参考",
+    "description": "OpenGraph protocol reference"
+  },
+  "twitterCards": {
+    "message": "Twitter卡片",
+    "description": "Twitter Cards"
+  },
+  "readMoreAtXDeveloperPage": {
+    "message": "在X开发者页面阅读更多",
+    "description": "Read more at X developer Page"
+  },
+  "readMoreHere": {
+    "message": "在此阅读更多",
+    "description": "Read more here"
+  },
+  "appleIos": {
+    "message": "苹果iOS",
+    "description": "Apple iOS"
+  },
+  "iosIntegration": {
+    "message": "iOS集成",
+    "description": "iOS integration"
+  },
+  "numberOfDomElements": {
+    "message": "DOM元素数量 (",
+    "description": "Number of DOM elements prefix"
+  },
+  "checkThisLinkAlso": {
+    "message": "同时检查此链接",
+    "description": "Check this link also"
+  },
+  "visitWebDevToKnowMore": {
+    "message": "访问Web.dev了解更多",
+    "description": "Visit Web.dev to know more"
+  },
+  "bloatedImages": {
+    "message": "臃肿图片 (",
+    "description": "Bloated Images prefix"
+  },
+  "clickHereToViewPageInsites": {
+    "message": "点击此处查看页面洞察",
+    "description": "Click here to view page insights"
+  },
+  "clickHereToLearnMore": {
+    "message": "点击此处了解更多",
+    "description": "Click here to Learn More"
+  },
+  "clickHereToGenerate": {
+    "message": "点击此处生成",
+    "description": "Click here to Generate"
+  },
+  "optimizeYourImagesHere": {
+    "message": "在此优化您的图片",
+    "description": "Optimize your images here"
+  },
+  "wantMoreTryThis": {
+    "message": "想要更多？试试这个",
+    "description": "Want more? Try this"
+  }
+}

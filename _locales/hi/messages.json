@@ -1,0 +1,398 @@
+{
+  "extensionName": {
+    "message": "वेब डेव चेकलिस्ट",
+    "description": "Extension name"
+  },
+  "extensionNameShort": {
+    "message": "WD चेकलिस्ट",
+    "description": "Short extension name"
+  },
+  "applying": {
+    "message": "लागू हो रहा है...",
+    "description": "Text shown when a setting is being applied"
+  },
+  "extensionDescription": {
+    "message": "किसी भी वेब पेज का विश्लेषण सर्वोत्तम प्रथाओं के उल्लंघन के लिए करता है",
+    "description": "Extension description"
+  },
+  "settingsTitle": {
+    "message": "सेटिंग्स",
+    "description": "Settings panel title"
+  },
+  "langTitle": {
+    "message": "भाषा",
+    "description": "Language title"
+  },
+  "closeSettingsTitle": {
+    "message": "सेटिंग्स बंद करें",
+    "description": "Close button title"
+  },
+  "generalTabText": {
+    "message": "सामान्य",
+    "description": "General tab text"
+  },
+  "shortcutsTabText": {
+    "message": "शॉर्टकट",
+    "description": "Shortcuts tab text"
+  },
+  "infoTabText": {
+    "message": "जानकारी",
+    "description": "Info tab text"
+  },
+  "languageLabel": {
+    "message": "भाषा",
+    "description": "Language dropdown label"
+  },
+  "darkModeLabel": {
+    "message": "डार्क मोड",
+    "description": "Dark mode toggle label"
+  },
+  "notificationsLabel": {
+    "message": "नोटिफिकेशन सक्षम करें",
+    "description": "Notifications toggle label"
+  },
+  "borderRadiusLabel": {
+    "message": "सभी बॉर्डर रेडियस",
+    "description": "Border radius toggle label"
+  },
+  "whatsNewTitle": {
+    "message": "नया क्या है",
+    "description": "What's new section title"
+  },
+  "aboutTitle": {
+    "message": "के बारे में",
+    "description": "About section title"
+  },
+  "reportIssuesTitle": {
+    "message": "समस्याएँ रिपोर्ट करें",
+    "description": "Report issues section title"
+  },
+  "resourcesTitle": {
+    "message": "संसाधन",
+    "description": "Resources section title"
+  },
+  "submitBugReportText": {
+    "message": "बग रिपोर्ट सबमिट करें",
+    "description": "Bug report button text"
+  },
+  "documentationText": {
+    "message": "दस्तावेज़ीकरण",
+    "description": "Documentation button text"
+  },
+  "footerText": {
+    "message": "अधिक जानकारी के लिए देखें",
+    "description": "Footer text before link"
+  },
+  "reloadPrompt": {
+    "message": "भाषा परिवर्तन लागू करने के लिए एक्सटेंशन को पुनः लोड करना होगा। अभी पुनः लोड करें?",
+    "description": "Language change reload prompt"
+  },
+  "structuredDataForGoogle": {
+    "message": "गूगल सर्च के लिए संरचित डेटा",
+    "description": "Structured Data for Google Search"
+  },
+  "donateTitle": {
+    "message": "एक्सटेंशन विकास का समर्थन करें",
+    "description": "Donate button title"
+  },
+  "donateText": {
+    "message": "Ko-Fi दान करें",
+    "description": "Donate button text"
+  },
+  "generalTabTitle": {
+    "message": "सामान्य सेटिंग्स",
+    "description": "General tab title attribute"
+  },
+  "shortcutsTabTitle": {
+    "message": "कीबोर्ड शॉर्टकट",
+    "description": "Shortcuts tab title attribute"
+  },
+  "infoTabTitle": {
+    "message": "जानकारी और संसाधन",
+    "description": "Info tab title attribute"
+  },
+  "changeLanguageTitle": {
+    "message": "एक्सटेंशन भाषा बदलें",
+    "description": "Language selector title attribute"
+  },
+  "schemaGeneratorTool": {
+    "message": "स्कीमा जनरेटर टूल",
+    "description": "Schema Generator tool"
+  },
+  "schemaMarkupValidator": {
+    "message": "स्कीमा मार्कअप वैलिडेटर",
+    "description": "Schema Markup Validator"
+  },
+  "richResultsTest": {
+    "message": "रिच रिजल्ट्स टेस्ट",
+    "description": "Rich Results Test"
+  },
+  "schemaJsonGeneratorTool": {
+    "message": "स्कीमा JSON जनरेटर टूल",
+    "description": "Schema JSON Generator tool"
+  },
+  "metaDescription": {
+    "message": "मेटा विवरण",
+    "description": "Meta description"
+  },
+  "metaDescriptionInfo": {
+    "message": "मेटा विवरण",
+    "description": "Meta description info"
+  },
+  "canonicalUrl": {
+    "message": "कैनोनिकल URL",
+    "description": "Canonical URL"
+  },
+  "websiteTitle": {
+    "message": "वेबसाइट शीर्षक",
+    "description": "Website Title"
+  },
+  "seoKeywords": {
+    "message": "SEO कीवर्ड्स:",
+    "description": "SEO Keywords prefix"
+  },
+  "chars": {
+    "message": "अक्षर",
+    "description": "Characters abbreviation"
+  },
+  "words": {
+    "message": "शब्द",
+    "description": "Words abbreviation"
+  },
+  "tagMissing": {
+    "message": "टैग अनुपस्थित",
+    "description": "Tag missing indicator"
+  },
+  "keywordResearchTool": {
+    "message": "कीवर्ड रिसर्च टूल",
+    "description": "Keyword Research Tool"
+  },
+  "seoBestPractices": {
+    "message": "SEO सर्वोत्तम प्रथाएं",
+    "description": "SEO Best Practices"
+  },
+  "websiteHasRobotsTxt": {
+    "message": "वेबसाइट में robots.txt फ़ाइल है",
+    "description": "Website has robots.txt"
+  },
+  "robotsTxtTutorial": {
+    "message": "Robots.txt ट्यूटोरियल",
+    "description": "Robots.txt tutorial"
+  },
+  "freeRobotsTxtGenerator": {
+    "message": "निःशुल्क Robots.txt जनरेटर",
+    "description": "Free Robots.txt Generator"
+  },
+  "freeRobotsTxtGenerator2": {
+    "message": "निःशुल्क Robots.txt जनरेटर (दूसरा विकल्प)",
+    "description": "Free Robots.txt Generator 2nd option"
+  },
+  "websiteHasXmlSitemaps": {
+    "message": "वेबसाइट में XML साइटमैप्स हैं",
+    "description": "Website has XML Sitemaps"
+  },
+  "generateXmlSitemaps": {
+    "message": "XML साइटमैप्स जनरेट करें",
+    "description": "Generate XML Sitemaps"
+  },
+  "websiteHasLlmsTxt": {
+    "message": "वेबसाइट में llms.txt है",
+    "description": "Website has llms.txt"
+  },
+  "llmsTxtDescription": {
+    "message": "LLMs को साइट जानकारी प्रदान करने का एक प्रस्ताव। नीचे अधिक पढ़ें",
+    "description": "llms.txt description"
+  },
+  "cssMediaQueries": {
+    "message": "CSS मीडिया क्वेरीज़",
+    "description": "CSS Media Queries"
+  },
+  "mediaQueriesExplained": {
+    "message": "मीडिया क्वेरीज़ समझाया गया",
+    "description": "Media queries explained"
+  },
+  "viewportMetaTag": {
+    "message": "व्यूपोर्ट मेटा टैग",
+    "description": "Viewport meta tag"
+  },
+  "usingTheViewport": {
+    "message": "व्यूपोर्ट का उपयोग करना",
+    "description": "Using the viewport"
+  },
+  "favicon": {
+    "message": "फेविकॉन",
+    "description": "Favicon"
+  },
+  "useFriendlyUrls": {
+    "message": "छोटी लंबाई वाले फ्रेंडली URL का उपयोग करें",
+    "description": "Use Friendly URLs"
+  },
+  "explanationAndGuide": {
+    "message": "स्पष्टीकरण और गाइड",
+    "description": "Explanation and guide"
+  },
+  "friendlyUrlChecker": {
+    "message": "फ्रेंडली URL चेकर",
+    "description": "Friendly URL Checker"
+  },
+  "htmlValidation": {
+    "message": "HTML सत्यापन",
+    "description": "HTML validation"
+  },
+  "onlineValidator": {
+    "message": "ऑनलाइन वैलिडेटर",
+    "description": "Online validator"
+  },
+  "waiAriaLandmarks": {
+    "message": "WAI-ARIA लैंडमार्क्स",
+    "description": "WAI-ARIA Landmarks"
+  },
+  "usingLandmarks": {
+    "message": "लैंडमार्क्स का उपयोग करना",
+    "description": "Using Landmarks"
+  },
+  "altAttributes": {
+    "message": "छवियों पर `alt=\"यहाँ टेक्स्ट\"` एट्रिब्यूट्स का उपयोग करें",
+    "description": "Alt attributes"
+  },
+  "imageAltAttributeTips": {
+    "message": "छवि 'alt' एट्रिब्यूट टिप्स",
+    "description": "Image alt attribute tips"
+  },
+  "xssVulnerabilities": {
+    "message": "XSS कमजोरियाँ \"",
+    "description": "XSS Vulnerabilities prefix"
+  },
+  "detected": {
+    "message": "पता चला",
+    "description": "Detected"
+  },
+  "notFound": {
+    "message": "नहीं मिला",
+    "description": "Not Found"
+  },
+  "getXssCheatSheet": {
+    "message": "XSS चीट शीट प्राप्त करें",
+    "description": "Get XSS Cheat Sheet"
+  },
+  "domXssCheatSheet": {
+    "message": "DOM XSS चीट शीट",
+    "description": "DOM XSS Cheat Sheet"
+  },
+  "xssFilterEvasion": {
+    "message": "XSS फ़िल्टर इवेज़न",
+    "description": "XSS Filter Evasion"
+  },
+  "csrfProtection": {
+    "message": "CSRF सुरक्षा \"",
+    "description": "CSRF Protection prefix"
+  },
+  "vulnerable": {
+    "message": "कमजोर",
+    "description": "Vulnerable"
+  },
+  "csrfCheatSheet": {
+    "message": "CSRF चीट शीट",
+    "description": "CSRF Cheat Sheet"
+  },
+  "csrfProtectionGuide": {
+    "message": "CSRF सुरक्षा गाइड",
+    "description": "CSRF Protection Guide"
+  },
+  "csrfTestingMethodology": {
+    "message": "CSRF टेस्टिंग मेथडोलॉजी",
+    "description": "CSRF Testing Methodology"
+  },
+  "siteUrlHas": {
+    "message": "साइट के URL में है ",
+    "description": "Site URL has prefix"
+  },
+  "valid": {
+    "message": "✅ वैध",
+    "description": "Valid indicator"
+  },
+  "invalid": {
+    "message": "❌ अवैध",
+    "description": "Invalid indicator"
+  },
+  "certificate": {
+    "message": "प्रमाणपत्र",
+    "description": "Certificate"
+  },
+  "getFreeSslCertificate": {
+    "message": "निःशुल्क SSL प्रमाणपत्र प्राप्त करें",
+    "description": "Get Free SSL Certificate"
+  },
+  "learnMoreAboutSsl": {
+    "message": "SSL के बारे में अधिक जानें",
+    "description": "Learn more about SSL"
+  },
+  "testYourDomain": {
+    "message": "अपना डोमेन टेस्ट करें",
+    "description": "Test Your Domain"
+  },
+  "openGraph": {
+    "message": "OpenGraph",
+    "description": "OpenGraph"
+  },
+  "openGraphProtocolReference": {
+    "message": "OpenGraph प्रोटोकॉल संदर्भ",
+    "description": "OpenGraph protocol reference"
+  },
+  "twitterCards": {
+    "message": "ट्विटर कार्ड्स",
+    "description": "Twitter Cards"
+  },
+  "readMoreAtXDeveloperPage": {
+    "message": "X डेवलपर पेज पर अधिक पढ़ें",
+    "description": "Read more at X developer Page"
+  },
+  "readMoreHere": {
+    "message": "यहाँ अधिक पढ़ें",
+    "description": "Read more here"
+  },
+  "appleIos": {
+    "message": "Apple iOS",
+    "description": "Apple iOS"
+  },
+  "iosIntegration": {
+    "message": "iOS इंटीग्रेशन",
+    "description": "iOS integration"
+  },
+  "numberOfDomElements": {
+    "message": "DOM तत्वों की संख्या (",
+    "description": "Number of DOM elements prefix"
+  },
+  "checkThisLinkAlso": {
+    "message": "इस लिंक को भी चेक करें",
+    "description": "Check this link also"
+  },
+  "visitWebDevToKnowMore": {
+    "message": "अधिक जानने के लिए Web.dev पर जाएँ",
+    "description": "Visit Web.dev to know more"
+  },
+  "bloatedImages": {
+    "message": "फूली हुई छवियाँ (",
+    "description": "Bloated Images prefix"
+  },
+  "clickHereToViewPageInsites": {
+    "message": "पेज इनसाइट्स देखने के लिए यहाँ क्लिक करें",
+    "description": "Click here to view page insights"
+  },
+  "clickHereToLearnMore": {
+    "message": "अधिक जानने के लिए यहाँ क्लिक करें",
+    "description": "Click here to Learn More"
+  },
+  "clickHereToGenerate": {
+    "message": "जनरेट करने के लिए यहाँ क्लिक करें",
+    "description": "Click here to Generate"
+  },
+  "optimizeYourImagesHere": {
+    "message": "अपनी छवियों को यहाँ ऑप्टिमाइज़ करें",
+    "description": "Optimize your images here"
+  },
+  "wantMoreTryThis": {
+    "message": "और चाहिए? यह आज़माएँ",
+    "description": "Want more? Try this"
+  }
+}

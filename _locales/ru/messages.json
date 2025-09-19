@@ -1,0 +1,398 @@
+{
+  "extensionName": {
+    "message": "Чеклист веб-разработчика",
+    "description": "Extension name"
+  },
+  "extensionNameShort": {
+    "message": "WD Чеклист",
+    "description": "Short extension name"
+  },
+  "applying": {
+    "message": "Применяется...",
+    "description": "Text shown when a setting is being applied"
+  },
+  "extensionDescription": {
+    "message": "Анализирует любую веб-страницу на нарушения лучших практик",
+    "description": "Extension description"
+  },
+  "settingsTitle": {
+    "message": "Настройки",
+    "description": "Settings panel title"
+  },
+  "langTitle": {
+    "message": "Язык",
+    "description": "Language title"
+  },
+  "closeSettingsTitle": {
+    "message": "Закрыть настройки",
+    "description": "Close button title"
+  },
+  "generalTabText": {
+    "message": "Общие",
+    "description": "General tab text"
+  },
+  "shortcutsTabText": {
+    "message": "Горячие клавиши",
+    "description": "Shortcuts tab text"
+  },
+  "infoTabText": {
+    "message": "Инфо",
+    "description": "Info tab text"
+  },
+  "languageLabel": {
+    "message": "Язык",
+    "description": "Language dropdown label"
+  },
+  "darkModeLabel": {
+    "message": "Тёмная тема",
+    "description": "Dark mode toggle label"
+  },
+  "notificationsLabel": {
+    "message": "Включить уведомления",
+    "description": "Notifications toggle label"
+  },
+  "borderRadiusLabel": {
+    "message": "Скругление углов",
+    "description": "Border radius toggle label"
+  },
+  "whatsNewTitle": {
+    "message": "Что нового",
+    "description": "What's new section title"
+  },
+  "aboutTitle": {
+    "message": "О расширении",
+    "description": "About section title"
+  },
+  "reportIssuesTitle": {
+    "message": "Сообщить о проблеме",
+    "description": "Report issues section title"
+  },
+  "resourcesTitle": {
+    "message": "Ресурсы",
+    "description": "Resources section title"
+  },
+  "submitBugReportText": {
+    "message": "Отправить отчёт об ошибке",
+    "description": "Bug report button text"
+  },
+  "documentationText": {
+    "message": "Документация",
+    "description": "Documentation button text"
+  },
+  "footerText": {
+    "message": "Для получения дополнительной информации посетите",
+    "description": "Footer text before link"
+  },
+  "reloadPrompt": {
+    "message": "Расширение необходимо перезагрузить для применения изменений языка. Перезагрузить сейчас?",
+    "description": "Language change reload prompt"
+  },
+  "structuredDataForGoogle": {
+    "message": "Структурированные данные для Google Поиска",
+    "description": "Structured Data for Google Search"
+  },
+  "donateTitle": {
+    "message": "Поддержать разработку расширения",
+    "description": "Donate button title"
+  },
+  "donateText": {
+    "message": "Пожертвовать через Ko-Fi",
+    "description": "Donate button text"
+  },
+  "generalTabTitle": {
+    "message": "Общие настройки",
+    "description": "General tab title attribute"
+  },
+  "shortcutsTabTitle": {
+    "message": "Горячие клавиши",
+    "description": "Shortcuts tab title attribute"
+  },
+  "infoTabTitle": {
+    "message": "Информация и ресурсы",
+    "description": "Info tab title attribute"
+  },
+  "changeLanguageTitle": {
+    "message": "Изменить язык расширения",
+    "description": "Language selector title attribute"
+  },
+  "schemaGeneratorTool": {
+    "message": "Генератор схем",
+    "description": "Schema Generator tool"
+  },
+  "schemaMarkupValidator": {
+    "message": "Валидатор разметки Schema",
+    "description": "Schema Markup Validator"
+  },
+  "richResultsTest": {
+    "message": "Тест расширенных результатов",
+    "description": "Rich Results Test"
+  },
+  "schemaJsonGeneratorTool": {
+    "message": "Генератор Schema JSON",
+    "description": "Schema JSON Generator tool"
+  },
+  "metaDescription": {
+    "message": "Мета-описание",
+    "description": "Meta description"
+  },
+  "metaDescriptionInfo": {
+    "message": "Мета-описание",
+    "description": "Meta description info"
+  },
+  "canonicalUrl": {
+    "message": "Канонический URL",
+    "description": "Canonical URL"
+  },
+  "websiteTitle": {
+    "message": "Заголовок сайта",
+    "description": "Website Title"
+  },
+  "seoKeywords": {
+    "message": "SEO-ключевые слова:",
+    "description": "SEO Keywords prefix"
+  },
+  "chars": {
+    "message": "символов",
+    "description": "Characters abbreviation"
+  },
+  "words": {
+    "message": "слов",
+    "description": "Words abbreviation"
+  },
+  "tagMissing": {
+    "message": "Тег отсутствует",
+    "description": "Tag missing indicator"
+  },
+  "keywordResearchTool": {
+    "message": "Инструмент для подбора ключевых слов",
+    "description": "Keyword Research Tool"
+  },
+  "seoBestPractices": {
+    "message": "Лучшие практики SEO",
+    "description": "SEO Best Practices"
+  },
+  "websiteHasRobotsTxt": {
+    "message": "На сайте есть файл robots.txt",
+    "description": "Website has robots.txt"
+  },
+  "robotsTxtTutorial": {
+    "message": "Инструкция по robots.txt",
+    "description": "Robots.txt tutorial"
+  },
+  "freeRobotsTxtGenerator": {
+    "message": "Бесплатный генератор robots.txt",
+    "description": "Free Robots.txt Generator"
+  },
+  "freeRobotsTxtGenerator2": {
+    "message": "Бесплатный генератор robots.txt (2-й вариант)",
+    "description": "Free Robots.txt Generator 2nd option"
+  },
+  "websiteHasXmlSitemaps": {
+    "message": "На сайте есть XML-карты сайта",
+    "description": "Website has XML Sitemaps"
+  },
+  "generateXmlSitemaps": {
+    "message": "Сгенерировать XML-карты сайта",
+    "description": "Generate XML Sitemaps"
+  },
+  "websiteHasLlmsTxt": {
+    "message": "На сайте есть llms.txt",
+    "description": "Website has llms.txt"
+  },
+  "llmsTxtDescription": {
+    "message": "Предложение по предоставлению информации о сайте для LLM. Подробнее ниже",
+    "description": "llms.txt description"
+  },
+  "cssMediaQueries": {
+    "message": "CSS Media Queries",
+    "description": "CSS Media Queries"
+  },
+  "mediaQueriesExplained": {
+    "message": "Объяснение Media Queries",
+    "description": "Media queries explained"
+  },
+  "viewportMetaTag": {
+    "message": "Мета-тег viewport",
+    "description": "Viewport meta tag"
+  },
+  "usingTheViewport": {
+    "message": "Использование viewport",
+    "description": "Using the viewport"
+  },
+  "favicon": {
+    "message": "Favicon",
+    "description": "Favicon"
+  },
+  "useFriendlyUrls": {
+    "message": "Использовать дружественные URL с короткой длиной",
+    "description": "Use Friendly URLs"
+  },
+  "explanationAndGuide": {
+    "message": "Объяснение и руководство",
+    "description": "Explanation and guide"
+  },
+  "friendlyUrlChecker": {
+    "message": "Проверка дружественных URL",
+    "description": "Friendly URL Checker"
+  },
+  "htmlValidation": {
+    "message": "Валидация HTML",
+    "description": "HTML validation"
+  },
+  "onlineValidator": {
+    "message": "Онлайн-валидатор",
+    "description": "Online validator"
+  },
+  "waiAriaLandmarks": {
+    "message": "Ориентиры WAI-ARIA",
+    "description": "WAI-ARIA Landmarks"
+  },
+  "usingLandmarks": {
+    "message": "Использование ориентиров",
+    "description": "Using Landmarks"
+  },
+  "altAttributes": {
+    "message": "Использовать атрибуты `alt=\"Текст здесь\"` для изображений",
+    "description": "Alt attributes"
+  },
+  "imageAltAttributeTips": {
+    "message": "Советы по атрибуту 'alt' изображений",
+    "description": "Image alt attribute tips"
+  },
+  "xssVulnerabilities": {
+    "message": "Уязвимости XSS \"",
+    "description": "XSS Vulnerabilities prefix"
+  },
+  "detected": {
+    "message": "Обнаружено",
+    "description": "Detected"
+  },
+  "notFound": {
+    "message": "Не найдено",
+    "description": "Not Found"
+  },
+  "getXssCheatSheet": {
+    "message": "Получить шпаргалку по XSS",
+    "description": "Get XSS Cheat Sheet"
+  },
+  "domXssCheatSheet": {
+    "message": "Шпаргалка по DOM XSS",
+    "description": "DOM XSS Cheat Sheet"
+  },
+  "xssFilterEvasion": {
+    "message": "Обход фильтров XSS",
+    "description": "XSS Filter Evasion"
+  },
+  "csrfProtection": {
+    "message": "Защита от CSRF \"",
+    "description": "CSRF Protection prefix"
+  },
+  "vulnerable": {
+    "message": "Уязвимо",
+    "description": "Vulnerable"
+  },
+  "csrfCheatSheet": {
+    "message": "Шпаргалка по CSRF",
+    "description": "CSRF Cheat Sheet"
+  },
+  "csrfProtectionGuide": {
+    "message": "Руководство по защите от CSRF",
+    "description": "CSRF Protection Guide"
+  },
+  "csrfTestingMethodology": {
+    "message": "Методология тестирования CSRF",
+    "description": "CSRF Testing Methodology"
+  },
+  "siteUrlHas": {
+    "message": "URL сайта имеет ",
+    "description": "Site URL has prefix"
+  },
+  "valid": {
+    "message": "✅ Действительно",
+    "description": "Valid indicator"
+  },
+  "invalid": {
+    "message": "❌ Недействительно",
+    "description": "Invalid indicator"
+  },
+  "certificate": {
+    "message": "Сертификат",
+    "description": "Certificate"
+  },
+  "getFreeSslCertificate": {
+    "message": "Получить бесплатный SSL-сертификат",
+    "description": "Get Free SSL Certificate"
+  },
+  "learnMoreAboutSsl": {
+    "message": "Узнать больше о SSL",
+    "description": "Learn more about SSL"
+  },
+  "testYourDomain": {
+    "message": "Проверить ваш домен",
+    "description": "Test Your Domain"
+  },
+  "openGraph": {
+    "message": "OpenGraph",
+    "description": "OpenGraph"
+  },
+  "openGraphProtocolReference": {
+    "message": "Справочник по протоколу OpenGraph",
+    "description": "OpenGraph protocol reference"
+  },
+  "twitterCards": {
+    "message": "Twitter Cards",
+    "description": "Twitter Cards"
+  },
+  "readMoreAtXDeveloperPage": {
+    "message": "Подробнее на странице разработчика X",
+    "description": "Read more at X developer Page"
+  },
+  "readMoreHere": {
+    "message": "Подробнее здесь",
+    "description": "Read more here"
+  },
+  "appleIos": {
+    "message": "Apple iOS",
+    "description": "Apple iOS"
+  },
+  "iosIntegration": {
+    "message": "Интеграция с iOS",
+    "description": "iOS integration"
+  },
+  "numberOfDomElements": {
+    "message": "Количество DOM-элементов (",
+    "description": "Number of DOM elements prefix"
+  },
+  "checkThisLinkAlso": {
+    "message": "Проверьте также эту ссылку",
+    "description": "Check this link also"
+  },
+  "visitWebDevToKnowMore": {
+    "message": "Посетите Web.dev, чтобы узнать больше",
+    "description": "Visit Web.dev to know more"
+  },
+  "bloatedImages": {
+    "message": "Тяжеловесные изображения (",
+    "description": "Bloated Images prefix"
+  },
+  "clickHereToViewPageInsites": {
+    "message": "Нажмите здесь, чтобы просмотреть информацию о странице",
+    "description": "Click here to view page insights"
+  },
+  "clickHereToLearnMore": {
+    "message": "Нажмите здесь, чтобы узнать больше",
+    "description": "Click here to Learn More"
+  },
+  "clickHereToGenerate": {
+    "message": "Нажмите здесь, чтобы сгенерировать",
+    "description": "Click here to Generate"
+  },
+  "optimizeYourImagesHere": {
+    "message": "Оптимизируйте изображения здесь",
+    "description": "Optimize your images here"
+  },
+  "wantMoreTryThis": {
+    "message": "Хотите больше? Попробуйте это",
+    "description": "Want more? Try this"
+  }
+}

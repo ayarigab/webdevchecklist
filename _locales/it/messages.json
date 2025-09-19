@@ -1,0 +1,398 @@
+{
+  "extensionName": {
+    "message": "Checklist Sviluppo Web",
+    "description": "Extension name"
+  },
+  "extensionNameShort": {
+    "message": "Checklist WD",
+    "description": "Short extension name"
+  },
+  "applying": {
+    "message": "Applicazione...",
+    "description": "Text shown when a setting is being applied"
+  },
+  "extensionDescription": {
+    "message": "Analizza qualsiasi pagina web per violazioni delle best practice",
+    "description": "Extension description"
+  },
+  "settingsTitle": {
+    "message": "Impostazioni",
+    "description": "Settings panel title"
+  },
+  "langTitle": {
+    "message": "Lingua",
+    "description": "Language title"
+  },
+  "closeSettingsTitle": {
+    "message": "Chiudi impostazioni",
+    "description": "Close button title"
+  },
+  "generalTabText": {
+    "message": "Generale",
+    "description": "General tab text"
+  },
+  "shortcutsTabText": {
+    "message": "Scorciatoie",
+    "description": "Shortcuts tab text"
+  },
+  "infoTabText": {
+    "message": "Info",
+    "description": "Info tab text"
+  },
+  "languageLabel": {
+    "message": "Lingua",
+    "description": "Language dropdown label"
+  },
+  "darkModeLabel": {
+    "message": "Modalità Scura",
+    "description": "Dark mode toggle label"
+  },
+  "notificationsLabel": {
+    "message": "Abilita Notifiche",
+    "description": "Notifications toggle label"
+  },
+  "borderRadiusLabel": {
+    "message": "Tutti i bordi arrotondati",
+    "description": "Border radius toggle label"
+  },
+  "whatsNewTitle": {
+    "message": "Novità",
+    "description": "What's new section title"
+  },
+  "aboutTitle": {
+    "message": "Informazioni",
+    "description": "About section title"
+  },
+  "reportIssuesTitle": {
+    "message": "Segnala Problemi",
+    "description": "Report issues section title"
+  },
+  "resourcesTitle": {
+    "message": "Risorse",
+    "description": "Resources section title"
+  },
+  "submitBugReportText": {
+    "message": "Invia Segnalazione Bug",
+    "description": "Bug report button text"
+  },
+  "documentationText": {
+    "message": "Documentazione",
+    "description": "Documentation button text"
+  },
+  "footerText": {
+    "message": "Per maggiori informazioni visita",
+    "description": "Footer text before link"
+  },
+  "reloadPrompt": {
+    "message": "L'estensione deve essere ricaricata per applicare le modifiche alla lingua. Ricaricare ora?",
+    "description": "Language change reload prompt"
+  },
+  "structuredDataForGoogle": {
+    "message": "Dati Strutturati per Google Search",
+    "description": "Structured Data for Google Search"
+  },
+  "donateTitle": {
+    "message": "Supporta lo sviluppo dell'estensione",
+    "description": "Donate button title"
+  },
+  "donateText": {
+    "message": "Dona con Ko-Fi",
+    "description": "Donate button text"
+  },
+  "generalTabTitle": {
+    "message": "Impostazioni generali",
+    "description": "General tab title attribute"
+  },
+  "shortcutsTabTitle": {
+    "message": "Scorciatoie da tastiera",
+    "description": "Shortcuts tab title attribute"
+  },
+  "infoTabTitle": {
+    "message": "Informazioni e risorse",
+    "description": "Info tab title attribute"
+  },
+  "changeLanguageTitle": {
+    "message": "Cambia lingua dell'estensione",
+    "description": "Language selector title attribute"
+  },
+  "schemaGeneratorTool": {
+    "message": "Strumento Generatore Schema",
+    "description": "Schema Generator tool"
+  },
+  "schemaMarkupValidator": {
+    "message": "Validatore Markup Schema",
+    "description": "Schema Markup Validator"
+  },
+  "richResultsTest": {
+    "message": "Test Risultati Arricchiti",
+    "description": "Rich Results Test"
+  },
+  "schemaJsonGeneratorTool": {
+    "message": "Strumento Generatore Schema JSON",
+    "description": "Schema JSON Generator tool"
+  },
+  "metaDescription": {
+    "message": "Meta descrizione",
+    "description": "Meta description"
+  },
+  "metaDescriptionInfo": {
+    "message": "Meta descrizione",
+    "description": "Meta description info"
+  },
+  "canonicalUrl": {
+    "message": "URL Canonica",
+    "description": "Canonical URL"
+  },
+  "websiteTitle": {
+    "message": "Titolo Sito Web",
+    "description": "Website Title"
+  },
+  "seoKeywords": {
+    "message": "Parole Chiave SEO:",
+    "description": "SEO Keywords prefix"
+  },
+  "chars": {
+    "message": "caratteri",
+    "description": "Characters abbreviation"
+  },
+  "words": {
+    "message": "parole",
+    "description": "Words abbreviation"
+  },
+  "tagMissing": {
+    "message": "Tag Mancante",
+    "description": "Tag missing indicator"
+  },
+  "keywordResearchTool": {
+    "message": "Strumento Ricerca Parole Chiave",
+    "description": "Keyword Research Tool"
+  },
+  "seoBestPractices": {
+    "message": "Best Practice SEO",
+    "description": "SEO Best Practices"
+  },
+  "websiteHasRobotsTxt": {
+    "message": "Il sito web ha un file robots.txt",
+    "description": "Website has robots.txt"
+  },
+  "robotsTxtTutorial": {
+    "message": "Tutorial robots.txt",
+    "description": "Robots.txt tutorial"
+  },
+  "freeRobotsTxtGenerator": {
+    "message": "Generatore Gratuito di Robots.txt",
+    "description": "Free Robots.txt Generator"
+  },
+  "freeRobotsTxtGenerator2": {
+    "message": "Generatore Gratuito di Robots.txt (2° opzione)",
+    "description": "Free Robots.txt Generator 2nd option"
+  },
+  "websiteHasXmlSitemaps": {
+    "message": "Il sito web ha Sitemap XML",
+    "description": "Website has XML Sitemaps"
+  },
+  "generateXmlSitemaps": {
+    "message": "Genera Sitemap XML",
+    "description": "Generate XML Sitemaps"
+  },
+  "websiteHasLlmsTxt": {
+    "message": "Il sito web ha llms.txt",
+    "description": "Website has llms.txt"
+  },
+  "llmsTxtDescription": {
+    "message": "Una proposta per fornire informazioni sul sito agli LLM. Leggi di più sotto",
+    "description": "llms.txt description"
+  },
+  "cssMediaQueries": {
+    "message": "Media Query CSS",
+    "description": "CSS Media Queries"
+  },
+  "mediaQueriesExplained": {
+    "message": "Spiegazione delle Media Query",
+    "description": "Media queries explained"
+  },
+  "viewportMetaTag": {
+    "message": "Meta tag viewport",
+    "description": "Viewport meta tag"
+  },
+  "usingTheViewport": {
+    "message": "Utilizzo del viewport",
+    "description": "Using the viewport"
+  },
+  "favicon": {
+    "message": "Favicon",
+    "description": "Favicon"
+  },
+  "useFriendlyUrls": {
+    "message": "Usa URL Amichevoli con Lunghezza Breve",
+    "description": "Use Friendly URLs"
+  },
+  "explanationAndGuide": {
+    "message": "Spiegazione e guida",
+    "description": "Explanation and guide"
+  },
+  "friendlyUrlChecker": {
+    "message": "Verificatore URL Amichevoli",
+    "description": "Friendly URL Checker"
+  },
+  "htmlValidation": {
+    "message": "Validazione HTML",
+    "description": "HTML validation"
+  },
+  "onlineValidator": {
+    "message": "Validatore online",
+    "description": "Online validator"
+  },
+  "waiAriaLandmarks": {
+    "message": "Landmark WAI-ARIA",
+    "description": "WAI-ARIA Landmarks"
+  },
+  "usingLandmarks": {
+    "message": "Utilizzo dei Landmark",
+    "description": "Using Landmarks"
+  },
+  "altAttributes": {
+    "message": "Usa attributi `alt=\"Testo Qui\"` sulle immagini",
+    "description": "Alt attributes"
+  },
+  "imageAltAttributeTips": {
+    "message": "Consigli per l'attributo 'alt' delle immagini",
+    "description": "Image alt attribute tips"
+  },
+  "xssVulnerabilities": {
+    "message": "Vulnerabilità XSS \"",
+    "description": "XSS Vulnerabilities prefix"
+  },
+  "detected": {
+    "message": "Rilevato",
+    "description": "Detected"
+  },
+  "notFound": {
+    "message": "Non Trovato",
+    "description": "Not Found"
+  },
+  "getXssCheatSheet": {
+    "message": "Ottieni la Cheat Sheet XSS",
+    "description": "Get XSS Cheat Sheet"
+  },
+  "domXssCheatSheet": {
+    "message": "Cheat Sheet XSS DOM",
+    "description": "DOM XSS Cheat Sheet"
+  },
+  "xssFilterEvasion": {
+    "message": "Evasione Filtro XSS",
+    "description": "XSS Filter Evasion"
+  },
+  "csrfProtection": {
+    "message": "Protezione CSRF \"",
+    "description": "CSRF Protection prefix"
+  },
+  "vulnerable": {
+    "message": "Vulnerabile",
+    "description": "Vulnerable"
+  },
+  "csrfCheatSheet": {
+    "message": "Cheat Sheet CSRF",
+    "description": "CSRF Cheat Sheet"
+  },
+  "csrfProtectionGuide": {
+    "message": "Guida Protezione CSRF",
+    "description": "CSRF Protection Guide"
+  },
+  "csrfTestingMethodology": {
+    "message": "Metodologia Test CSRF",
+    "description": "CSRF Testing Methodology"
+  },
+  "siteUrlHas": {
+    "message": "L'URL del sito ha ",
+    "description": "Site URL has prefix"
+  },
+  "valid": {
+    "message": "✅ Valido",
+    "description": "Valid indicator"
+  },
+  "invalid": {
+    "message": "❌ Non Valido",
+    "description": "Invalid indicator"
+  },
+  "certificate": {
+    "message": "Certificato",
+    "description": "Certificate"
+  },
+  "getFreeSslCertificate": {
+    "message": "Ottieni un Certificato SSL Gratuito",
+    "description": "Get Free SSL Certificate"
+  },
+  "learnMoreAboutSsl": {
+    "message": "Scopri di più sull'SSL",
+    "description": "Learn more about SSL"
+  },
+  "testYourDomain": {
+    "message": "Testa il Tuo Dominio",
+    "description": "Test Your Domain"
+  },
+  "openGraph": {
+    "message": "OpenGraph",
+    "description": "OpenGraph"
+  },
+  "openGraphProtocolReference": {
+    "message": "Riferimento Protocollo OpenGraph",
+    "description": "OpenGraph protocol reference"
+  },
+  "twitterCards": {
+    "message": "Twitter Cards",
+    "description": "Twitter Cards"
+  },
+  "readMoreAtXDeveloperPage": {
+    "message": "Leggi di più sulla pagina sviluppatori X",
+    "description": "Read more at X developer Page"
+  },
+  "readMoreHere": {
+    "message": "Leggi di più qui",
+    "description": "Read more here"
+  },
+  "appleIos": {
+    "message": "Apple iOS",
+    "description": "Apple iOS"
+  },
+  "iosIntegration": {
+    "message": "Integrazione iOS",
+    "description": "iOS integration"
+  },
+  "numberOfDomElements": {
+    "message": "Numero di elementi DOM (",
+    "description": "Number of DOM elements prefix"
+  },
+  "checkThisLinkAlso": {
+    "message": "Controlla anche questo link",
+    "description": "Check this link also"
+  },
+  "visitWebDevToKnowMore": {
+    "message": "Visita Web.dev per saperne di più",
+    "description": "Visit Web.dev to know more"
+  },
+  "bloatedImages": {
+    "message": "Immagini Gonfie (",
+    "description": "Bloated Images prefix"
+  },
+  "clickHereToViewPageInsites": {
+    "message": "Clicca qui per Visualizzare le Insight della Pagina",
+    "description": "Click here to view page insights"
+  },
+  "clickHereToLearnMore": {
+    "message": "Clicca qui per Saperne di Più",
+    "description": "Click here to Learn More"
+  },
+  "clickHereToGenerate": {
+    "message": "Clicca qui per Generare",
+    "description": "Click here to Generate"
+  },
+  "optimizeYourImagesHere": {
+    "message": "Ottimizza le tue immagini qui",
+    "description": "Optimize your images here"
+  },
+  "wantMoreTryThis": {
+    "message": "Vuoi di più? Prova questo",
+    "description": "Want more? Try this"
+  }
+}
